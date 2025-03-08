@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain_openai import OpenAI
 from langchain.chains.summarize import load_summarize_chain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -83,6 +83,6 @@ if uploaded_file is not None:
         chain_type="map_reduce"
     )
 
-    summary_output = summarize_chain.run(splitted_documents)
+    summary_output = summarize_chain.invoke(splitted_documents)
 
-    st.write(summary_output)
+    st.write(summary_output["output_text"])
