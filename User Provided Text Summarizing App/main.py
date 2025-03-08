@@ -16,7 +16,7 @@ def generate_response(txt):
         llm,
         chain_type="map_reduce"
     )
-    return chain.run(docs)
+    return chain.invoke(docs)["output_text"]
 
 st.set_page_config(
     page_title = "Writing Text Summarization"
